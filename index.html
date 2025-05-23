@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Muchas Felicidades</title>
+  <link rel="icon" href="happy.jpg" type="image/png" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Pacifico', cursive;
+      background-color: #fce4ec;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
+      margin: 0;
+    }
+
+    .tarjeta-container {
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .decoracion {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .sobre {
+      background-color: #fff;
+      border: 2px solid #f06292;
+      border-radius: 10px;
+      padding: 20px;
+      width: 90%;
+      max-width: 350px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.6s ease-in-out;
+      outline: none;
+    }
+
+    .sobre.abierto {
+      transform: rotateY(5deg);
+    }
+
+    .carta {
+      display: none;
+      margin-top: 20px;
+      color: #880e4f;
+      font-size: 18px;
+    }
+
+    .sobre.abierto .carta {
+      display: block;
+    }
+
+    .pastelDecorado {
+      width: 100px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 450px) {
+      .carta {
+        font-size: 16px;
+      }
+
+      .pastelDecorado {
+        width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="tarjeta-container">
+    <div class="decoracion">💌 Toca para abrir la tarjeta</div>
+
+    <div class="sobre" onclick="abrirTarjeta()" role="button" tabindex="0">
+      <div class="tapa"></div>
+      <div class="carta">
+        <h1>¡Feliz Cumpleaños, Erika! 🎉</h1>
+        <p>Hoy no es un día cualquiera… Hoy el calendario brilla un poco más,<br>
+        porque tú estás de celebración. ✨</p>
+        <p>Que este nuevo año esté lleno de momentos inolvidables,<br>
+        sonrisas sinceras, gente bonita y todo lo que haga feliz a tu corazón. 🎁</p>
+        <p>Gracias por ser como eres: auténtica, fuerte y con una luz única.<br>
+        Te mereces un día mágico y un año increíble. 💖</p>
+        <p><strong>Con cariño, F.Rodz 💖</strong></p>
+        <img src="https://i.postimg.cc/Wpmgcqxr/R.png" class="pastelDecorado" alt="Pastel" />
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    function abrirTarjeta() {
+      const sobre = document.querySelector('.sobre');
+      sobre.classList.add('abierto');
+      confetti({
+        particleCount: 200,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+    }
+
+    document.querySelector('.sobre').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        abrirTarjeta();
+      }
+    });
+  </script>
+</body>
+</html>
